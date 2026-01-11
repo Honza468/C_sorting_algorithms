@@ -1,0 +1,75 @@
+Vysvětlení:
+vkladany - název porměnné
+for cyklus - jeden ze tří cyklů, které se v programování používají
+while cyklus - obdobná situace jako u for cyklu
+levá strana/přední část pole - strana, kde pole indexově začíná
+pravá strana/zadní část pole - strana, kde pole indexově končí
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+ALGORITMY VNITŘNÍHO ŘAZENÍ
+V souborech obsažených v této složce jsou napsány algoritmy vnitřního řazení, které se používají k řazení dat v souborech, polích, atd. Ke každému řadícímu algoritmu napíši v následujících bodech jak funguje a vysvětlím průchod polem.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+SELECTION SORT
+Algoritmus si pole rozdělí na seřazenou a neseřazenou část. Tyto části jsou definované v tzv. for cyklech, které zajišťují opakování těchto cyklů. Nejdříve si algoritmus nastaví první hodnotu. Tato hodnota je prvním prvkem pole. Tuto hodnotu si drží. Dále se v druhém for cyklu posune o jednu hodnotu dále a hledá v poli ohraničeného touto hodnotou a koncem nejmenší hodnotu. Hodnoty mezitím porovnává i s drženou hodnotou. Jakmile najde nejmenší hodnotu v poli a polem dojde do konce vymění první načtené číslo s nejmenším nalezeným číslem v poli. Tento cyklus se opakuje, dokud není pole seřazeno.
+
+Pole prochází několikrát po sobě a vždy jej prochází od položek s nejnižším indexem po položky s indexem největším. Spodní hranice, od které pole prochází, se zmenšuje díky většímu počtu seřazených hodnot, které se umisťují na začátek pole. Pole algoritmus prochází tak dloucho, dokud není seřazeno.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+INSERT SORT
+Zde žádné dělení na seřazenou část a neseřazenou část neprobíhá. Řazení opět probíhá pomocí for cyklu. Tentokrát však pouze jednoho doplněného while cyklem, který zajišťuje průchod polem a porovnávání velikosti položek. Ve for cyklu si nejprve algoritmus nastaví hodnotu s indexem 1 (druhá hodnota pole), kterou pomocí while cyklu porovná s hodnoutou předchozí. Pokud je hodnota s menším indexem menší uloží se na místo porovnávané hodnoty. Porovnávanou hodnotu však nepřepíšeme díky tomu, že si ji nahrajeme do proměnné vkladany. Takto procházíme celé pole. Vždy porovnáváme hodnoty s menším indexem než má proměnná vkladany. Máme však podmínku ve while cyklu, která zajišťuje, aby se cyklus nedostal mimo paměť. Prvky v poli se také po každém porovnání o jeden index posunou nahoru, aby umožnily vložení vkládaného prvku. Po nalezení menší hodnoty, než má proměnná, vložíme prvek do místa, které je nad touto hodnotou. Tohle probíhá opakovaně, dokud není pole seřazeno.
+
+Pole algoritmus prochází od prvků s nejnižším indexem po prvky s nejvyšším indexem. Prochází jej však tak, že postupuje od nejvyššího načteného indexu k těm nejnižším a tím pole řadí už v průběhu průchodu polem. K seřazení mu tedy stačí jeden průchod polem.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+INSERT SORT SE ZARÁŽKOU
+Tento řadící algoritmus zlepšuje funkčnost normálního insert sortu pomocí tzv. zarážky. Ta se může umístit před pole nebo za pole. Musíme však na oba tyto algoritmy mít pole o jeden prvek delší, aby bylo místo na zarážku. Do zarážky se načítá prvek vkladany, který potom porovnáváme s polem (stejně jako v normálním insert sortu). Zarážka nám však pole ohraničuje z jedné strany, a proto nemusíme mít v while cyklu podmínku pro přetečení pole.
+
+ZARÁŽKA VPRAVO
+Zarážka je umístěna za polem, tudíž pole procházíme z pravé strany (na rozdíl od normálního insert sortu). Algoritmus funguje stejně jako normální insert sort, ale máme jej ohraničen zarážkou, která je napsána v podmínce while cyklu. Zde není moc co k vysvětlení, jelikož algoritmus funguje opravdu stejně.
+
+Pole je procházeno směrem od největších indexů k nejmenším. Pouze je zde zarážka, která je umístěna na posledním prvku pole. Sem se dává vkladany prvek, kterým se ohraničuje pole.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+ZARÁŽKA VLEVO
+Před začátkem celého řazení si nejprve musíme celé pole posunout o jeden prvek napřed. Tohle posunutí probíhá od zadní části pole. Poslední prvek pole je totiž prázdný, a proto do něj můžeme vložit hodnotu předchozího indexu. Díky tomu můžeme posunout celé pole.
+
+Následně budeme pole procházet od přední strany pole. Tudíž stejným směrem jako u normálního insert sortu a opačným směrem než u insert sortu se zarážkou vpravo. Zde budeme načítat hodnoty a porovnávat je, zda-li jsou menší než hodnoty s menšími indexy. Průchod polem je opět ohraničen zarážkou na okraji pole. Opět se tento algoritmus teoreticky moc neliší od normálního insert sortu.
+
+Pole se prochází od levé strany po pravou stranu. Nic se v průchodu polem neliší od insert sortu bez zarážky.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+BUBBLE SORT
+Zde si pole posouvat nijak nemusíme, protože to k chodu tohoto algoritmu není potřeba. Algoritmus prochází pole od strany pravé k levé straně. Vždy si načte nejkrajnější hodnotu pole na pravé straně a porovnává ji s prvky menších indexů (postupně). Až však narazí na menší prvek, tak si jej nahraje, umístí na jeho index prvek větší a pokračuje na konec pole s tímto nahraným prvkem. Ten opět stejným způsobem porovnává. Postupně se takto projde celé pole. Pole se také dělí na seřazenou a neseřazenou část, jelikož se posouvá spodní hranice, kam prvky mohou dány. Tohle se může dělat, kvůli postupnému řazení od nejmenších prvků pole. 
+
+Pole je procházeno několikrát po sobě, dokud nejsou všechny prvky seřazeny. Prochází se od pravé strany pole k levé straně.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+RIPPLE SORT
+Algoritmus funguje stejně jako u bubble sortu, pouze se pamatuje index poslední výměny. Ví tedy, kde proběhla poslední výměna a pokračuje od tohoto místa. Prvky po dním jsou totiž již seřazené a nemusí je procházet znovu.
+
+Pole je procházeno stejně jako u bubble sortu s jedinou výjimkou. Tou výjimkou je, že si drží index poslední výměny a prvky tedy řadí pouze nad tímto indexem.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+SHAKER SORT
+Další modifikace bubble sortu, která však pole prochází dvěma směry. Směrem nahoru a poté dolů. Pole nejprve prochází nahoru, kde hledá ty největší prvky z celého pole. Ty pak zařadí tam, kde je pro ně místo. Načte si jeho index do proměnné, která určuje, kde proběhla poslední výměna při směru zleva. Poté pole prochází z pravé strany směrem dolů. Jeho dolní hranicí je index poslední levé výměny. Při výměně prvků v poli se načte index opět od další proměnné, která určuje poslední pravou výměnu. Následně jede pole opět zleva po tuto hranici. Tohle se opakuje dokud není pole seřazeno
+
+Pole je procházeno dvěma směry: Nejprve od apodní hranice po horní a poté naopak. Tohle se opakuje, dokud není pole seřazeno.   
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
