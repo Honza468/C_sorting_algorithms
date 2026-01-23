@@ -80,6 +80,26 @@ void insertSortSeZL(int pole[], int n)
 	potvrzujiciHlaska();
 }
 
+void insertSortSeZP(int pole[], int n)
+{
+	printf("Insert sort se zarazkou vpravo.\n");
+	zacatkovaHlaska();
+	int vkladany = 0;
+	int index = 0;
+	for(int i = n - 3; i > 0; i--)
+	{
+		pole[n - 1] = pole[i];
+		index = i;
+		while(pole[n - 1] > pole[index + 1])
+		{
+			pole[index] = pole[index + 1];
+			index++;
+		}
+		pole[index] = pole[n - 1];
+	}
+	potvrzujiciHlaska();
+}
+
 int prepisSouboru(FILE * vstup, int pole[])
 {
 	int i = 0;
@@ -106,6 +126,7 @@ int main()
 	int testovaci1[12] = {12, 1, 3, 0, 65, 8, 7, 6, 11, 3, 2};
 	int testovaci2[12] = {12, 1, 3, 0, 65, 8, 7, 6, 11, 3, 2};
 	int testovaci3[13] = {12, 1, 3, 0, 65, 8, 7, 6, 11, 3, 2}; 
+	int testovaci4[13] = {12, 1, 3, 0, 65, 8, 7, 6, 11, 3, 2};
 	//char nazev[MAX];
 	//printf("V souboru, ktery chcete nacist a seradit muze byt maximalne 100 znaku!\n");
 	//printf("Zadejte nazev souboru, ktery chcete otevrit a vyuzit pro zpracovani dat.");
@@ -120,11 +141,13 @@ int main()
 	//}
 	//int pole[MAX];
 	//int n = prepisSouboru(f, pole);
-	selectionSort(testovaci1, 11);
-	vypisPole(0, testovaci1, 11);
-	insertSort(testovaci2, 11);
-	vypisPole(0, testovaci2, 11);
-	insertSortSeZL(testovaci3, 12);
-	vypisPole(1, testovaci3, 12);
+	selectionSort(testovaci1, 12);
+	vypisPole(0, testovaci1, 12);
+	insertSort(testovaci2, 12);
+	vypisPole(0, testovaci2, 12);
+	insertSortSeZL(testovaci3, 13);
+	vypisPole(1, testovaci3, 13);
+	insertSortSeZP(testovaci4, 13);
+	vypisPole(0, testovaci4, 13);
 	return 0;
 }
