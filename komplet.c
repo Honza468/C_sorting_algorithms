@@ -20,6 +20,16 @@ void selectionSort(int pole[], int n)
 	}
 }
 
+void insertSort(int pole[], int n)
+{
+
+}
+
+void potvrzujiciHlaska()
+{
+	printf("Serazeni probehlo uspesne!\n");
+}
+
 int prepisSouboru(FILE * vstup, int pole[])
 {
 	int i = 0;
@@ -59,7 +69,7 @@ int main()
 	//int pole[MAX];
 	//int n = prepisSouboru(f, pole);
 	selectionSort(testovaci1, 11);
-	printf("Serazeni probehlo uspesne!\n");
+	potvrzujiciHlaska();
 	vypisPole(testovaci1, 11);
 	return 0;
 }
