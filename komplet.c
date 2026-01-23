@@ -4,6 +4,7 @@
 
 void selectionSort(int pole[], int n)
 {
+	printf("Zacatek selection sort algoritmu\n");
 	for(int i = 0; i < n - 2; i++)
 	{
 		int minIndex = i;
@@ -12,6 +13,7 @@ void selectionSort(int pole[], int n)
 			if(pole[minIndex] > pole[d])
 			{
 				minIndex = d;
+				printf(".");
 			}
 		}
 		int pomocna = pole[i];
@@ -22,6 +24,7 @@ void selectionSort(int pole[], int n)
 
 void insertSort(int pole[], int n)
 {
+	printf("Zacatek insert sort algoritmu\n");
 	int vkladany = 0;
 	int index = 0;
 	for(int i = 1; i < n - 1; i++)
@@ -32,6 +35,7 @@ void insertSort(int pole[], int n)
 		{
 			pole[index] = pole[index - 1];
 			index--;
+			printf(".");
 		}
 		pole[index] = vkladany;
 	}
@@ -39,7 +43,7 @@ void insertSort(int pole[], int n)
 
 void potvrzujiciHlaska()
 {
-	printf("Serazeni probehlo uspesne!\n");
+	printf("\nSerazeni probehlo uspesne!\n");
 }
 
 int prepisSouboru(FILE * vstup, int pole[])
@@ -66,6 +70,7 @@ void vypisPole(int pole[], int n)
 int main()
 {
 	int testovaci1[12] = {12, 1, 3, 0, 65, 8, 7, 6, 11, 3, 2};
+	int testovaci2[12] = {12, 1, 3, 0, 65, 8, 7, 6, 11, 3, 2};
 	//char nazev[MAX];
 	//printf("V souboru, ktery chcete nacist a seradit muze byt maximalne 100 znaku!\n");
 	//printf("Zadejte nazev souboru, ktery chcete otevrit a vyuzit pro zpracovani dat.");
@@ -83,5 +88,8 @@ int main()
 	selectionSort(testovaci1, 11);
 	potvrzujiciHlaska();
 	vypisPole(testovaci1, 11);
+	insertSort(testovaci2, 11);
+	potvrzujiciHlaska();
+	vypisPole(testovaci2, 11);
 	return 0;
 }
