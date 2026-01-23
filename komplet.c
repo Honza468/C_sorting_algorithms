@@ -2,6 +2,12 @@
 #include <stdlib.h>
 #define MAX 100
 
+//----- Designove funkce, slouzi pro lepsi navigaci ve vypisech -----
+void oddelovaciCara()
+{
+	printf("----------------------------------------------------\n");
+}
+
 void zacatkovaHlaska()
 {
 	printf("Zacatek radiciho programu.\n");
@@ -11,7 +17,9 @@ void potvrzujiciHlaska()
 {
 	printf("Serazeni probehlo uspesne!\n");
 }
+//----- Konec sekce designovych funkci -----
 
+//----- Sekce radicich algoritmu -----
 void selectionSort(int pole[], int n)
 {
 	printf("Selection sort algoritmus.\n");
@@ -33,6 +41,8 @@ void selectionSort(int pole[], int n)
 	potvrzujiciHlaska();
 }
 
+//------------------------------------
+
 void insertSort(int pole[], int n)
 {
 	printf("Insert sort algoritmus (verze bez zarazek).\n");
@@ -52,6 +62,8 @@ void insertSort(int pole[], int n)
 	}
 	potvrzujiciHlaska();
 }
+
+//------------------------------------ 
 
 void insertSortSeZL(int pole[], int n)
 {
@@ -80,16 +92,16 @@ void insertSortSeZL(int pole[], int n)
 	potvrzujiciHlaska();
 }
 
+//------------------------------------ 
+
 void insertSortSeZP(int pole[], int n)
 {
 	printf("Insert sort se zarazkou vpravo.\n");
 	zacatkovaHlaska();
-	int vkladany = 0;
-	int index = 0;
-	for(int i = n - 3; i > 0; i--)
+	for(int i = n - 3; i >= 0; i--)
 	{
 		pole[n - 1] = pole[i];
-		index = i;
+		int index = i;
 		while(pole[n - 1] > pole[index + 1])
 		{
 			pole[index] = pole[index + 1];
@@ -99,7 +111,9 @@ void insertSortSeZP(int pole[], int n)
 	}
 	potvrzujiciHlaska();
 }
+//----- Konec sekce radicich algoritmu -----
 
+//-----Sekce pomocnych funkci pro spravnou funkci algoritmu -----
 int prepisSouboru(FILE * vstup, int pole[])
 {
 	int i = 0;
@@ -120,13 +134,18 @@ void vypisPole(int pocatek, int pole[], int n)
 	}
 	printf("\n");
 }
+//----- Konec sekce pomocnych funkci -----
 
 int main()
 {
+//----- Sekce testovaci poli -----
 	int testovaci1[12] = {12, 1, 3, 0, 65, 8, 7, 6, 11, 3, 2};
 	int testovaci2[12] = {12, 1, 3, 0, 65, 8, 7, 6, 11, 3, 2};
 	int testovaci3[13] = {12, 1, 3, 0, 65, 8, 7, 6, 11, 3, 2}; 
 	int testovaci4[13] = {12, 1, 3, 0, 65, 8, 7, 6, 11, 3, 2};
+//----- Konec sekce testovacich poli -----
+
+//----- Zakomentovana sekce, bude zprovoznena v budoucnu -----
 	//char nazev[MAX];
 	//printf("V souboru, ktery chcete nacist a seradit muze byt maximalne 100 znaku!\n");
 	//printf("Zadejte nazev souboru, ktery chcete otevrit a vyuzit pro zpracovani dat.");
@@ -141,13 +160,27 @@ int main()
 	//}
 	//int pole[MAX];
 	//int n = prepisSouboru(f, pole);
+//----- Konec zakomentovane sekce -----
+
+//----- Selection sort -----
+	oddelovaciCara();
 	selectionSort(testovaci1, 12);
 	vypisPole(0, testovaci1, 12);
+
+//----- Insert sort bez zarazek -----
+	oddelovaciCara();
 	insertSort(testovaci2, 12);
 	vypisPole(0, testovaci2, 12);
+
+//----- Insert sort se zarazkou vlevo -----
+	oddelovaciCara();
 	insertSortSeZL(testovaci3, 13);
 	vypisPole(1, testovaci3, 13);
+
+//----- Insert sort se zarazkou vpravo -----
+	oddelovaciCara();
 	insertSortSeZP(testovaci4, 13);
-	vypisPole(0, testovaci4, 13);
+	vypisPole(1, testovaci4, 13);
+	oddelovaciCara();
 	return 0;
 }
