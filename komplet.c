@@ -13,7 +13,6 @@ void selectionSort(int pole[], int n)
 			if(pole[minIndex] > pole[d])
 			{
 				minIndex = d;
-				printf(".");
 			}
 		}
 		int pomocna = pole[i];
@@ -35,7 +34,6 @@ void insertSort(int pole[], int n)
 		{
 			pole[index] = pole[index - 1];
 			index--;
-			printf(".");
 		}
 		pole[index] = vkladany;
 	}
