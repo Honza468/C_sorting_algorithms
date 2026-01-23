@@ -22,7 +22,19 @@ void selectionSort(int pole[], int n)
 
 void insertSort(int pole[], int n)
 {
-
+	int vkladany = 0;
+	int index = 0;
+	for(int i = 1; i < n - 1; i++)
+	{
+		vkladany = pole[i];
+		index = i;
+		while((index > 0) && (pole[index - 1] > vkladany))
+		{
+			pole[index] = pole[index - 1];
+			index--;
+		}
+		pole[index] = vkladany;
+	}
 }
 
 void potvrzujiciHlaska()
