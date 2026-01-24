@@ -111,6 +111,29 @@ void insertSortSeZP(int pole[], int n)
 	}
 	potvrzujiciHlaska();
 }
+
+//------------------------------------
+
+void bubbleSort(int pole[], int n)
+{
+	printf("Bubble sort\n");
+	zacatkovaHlaska();
+	int pomocna = 0;
+	for(int i = 0; i < n - 2; i++)
+	{
+		for(int d = n - 1; d > i; d--)
+		{
+			if(pole[d - 1] > pole[d])
+			{
+				pomocna = pole[d - 1];
+				pole[d - 1] = pole[d];
+				pole[d] = pomocna;
+			}
+		}
+	}
+	potvrzujiciHlaska();
+}
+
 //----- Konec sekce radicich algoritmu -----
 
 //-----Sekce pomocnych funkci pro spravnou funkci algoritmu -----
@@ -143,6 +166,7 @@ int main()
 	int testovaci2[12] = {12, 1, 3, 0, 65, 8, 7, 6, 11, 3, 2};
 	int testovaci3[13] = {12, 1, 3, 0, 65, 8, 7, 6, 11, 3, 2}; 
 	int testovaci4[13] = {12, 1, 3, 0, 65, 8, 7, 6, 11, 3, 2};
+	int testovaci5[12] = {12, 1, 3, 0, 65, 8, 7, 6, 11, 3, 2};
 //----- Konec sekce testovacich poli -----
 
 //----- Zakomentovana sekce, bude zprovoznena v budoucnu -----
@@ -181,6 +205,10 @@ int main()
 	oddelovaciCara();
 	insertSortSeZP(testovaci4, 13);
 	vypisPole(1, testovaci4, 13);
+
+//---- Bubble sort -----
 	oddelovaciCara();
+	bubbleSort(testovaci5, 11);
+	vypisPole(0, testovaci5, 12);
 	return 0;
 }
