@@ -134,6 +134,72 @@ void bubbleSort(int pole[], int n)
 	potvrzujiciHlaska();
 }
 
+//------------------------------------
+
+void rippleSort(int pole[], int n)
+{
+	printf("Ripple sort\n");
+	zacatkovaHlaska();
+  int posledni_Vymena = n;
+  int pomocna = 0;
+  for(int d = 0; d < n - 1; d = posledni_Vymena)
+  {
+    posledni_Vymena = n - 1;
+    for(int i = n - 1; i > d; i--)
+    {
+    	if(pole[i - 1] > pole[i])
+      {
+      	pomocna = pole[i - 1];
+        pole[i - 1] = pole[i];
+        pole[i] = pomocna;
+        posledni_Vymena = i;
+      }
+    }
+  }
+	potvrzujiciHlaska();
+}
+
+//------------------------------------
+
+void shakerSort(int pole[], int n)
+{
+	printf("Shaker sort\n");
+	zacatkovaHlaska();
+  int pocitadlo = 0;
+  int posledni_VymenaP = n - 1;
+  int posledni_VymenaL = 0;
+  int pomocna = 0;
+  while(posledni_VymenaL < posledni_VymenaP)
+  {
+  	pocitadlo = posledni_VymenaL;
+    for(int i = posledni_VymenaL; i < posledni_VymenaP; i++)
+    {
+    	if(pole[i] > pole[i + 1])
+      {
+      	pomocna = pole[i];
+        pole[i] = pole[i + 1];
+        pole[i + 1] = pomocna;
+        pocitadlo = i; 
+      }
+		}
+    posledni_VymenaP = pocitadlo;
+            
+    pocitadlo = posledni_VymenaP;
+    for(int i = posledni_VymenaP; i > posledni_VymenaL; i--)
+    {
+      if(pole[i - 1] > pole[i])
+      {
+      	pomocna = pole[i];
+        pole[i] = pole[i - 1];
+        pole[i - 1] = pomocna;
+        pocitadlo = i; 
+      }
+    }
+    posledni_VymenaL = pocitadlo;
+  }
+	potvrzujiciHlaska();
+}
+
 //----- Konec sekce radicich algoritmu -----
 
 //-----Sekce pomocnych funkci pro spravnou funkci algoritmu -----
@@ -167,6 +233,8 @@ int main()
 	int testovaci3[13] = {12, 1, 3, 0, 65, 8, 7, 6, 11, 3, 2}; 
 	int testovaci4[13] = {12, 1, 3, 0, 65, 8, 7, 6, 11, 3, 2};
 	int testovaci5[12] = {12, 1, 3, 0, 65, 8, 7, 6, 11, 3, 2};
+	int testovaci6[12] = {12, 1, 3, 0, 65, 8, 7, 6, 11, 3, 2};
+	int testovaci7[12] = {12, 1, 3, 0, 65, 8, 7, 6, 11, 3, 2};
 //----- Konec sekce testovacich poli -----
 
 //----- Zakomentovana sekce, bude zprovoznena v budoucnu -----
@@ -210,5 +278,15 @@ int main()
 	oddelovaciCara();
 	bubbleSort(testovaci5, 11);
 	vypisPole(0, testovaci5, 12);
+
+//----- Ripple sort -----
+	oddelovaciCara();
+	rippleSort(testovaci6, 11);
+	vypisPole(0, testovaci6, 12);
+
+//----- Shaker sort -----
+	oddelovaciCara();
+	shakerSort(testovaci7, 11);
+	vypisPole(0, testovaci7, 12);
 	return 0;
 }
