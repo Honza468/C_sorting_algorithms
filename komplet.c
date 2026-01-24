@@ -214,6 +214,7 @@ void vypisPole(int pocatek, int pole[], int n)
 
 int main()
 {
+	char nazev[MAX];
 	printf("Zadejte nazev souboru, ktery chcete otevrit a vyuzit pro zpracovani dat.");
 	printf("Nazev souboru muze mit maximalne 100 znaku!");
 	printf("Soubor musite zadat i s jeho priponou!");
@@ -230,14 +231,14 @@ int main()
 
 	printf("Nabidka radicich algoritmu (vyberte, kterym algoritmem chcete radit).\n");
 	oddelovaciCara();	
-	printf("
-		(1) Selection sort\n
-		(2) Insert sort (bez zarazek)\n
-		(3) Insert sort (se zarazkou vlevo)\n
-		(4) Insert sort (se zarazkou vpravo)\n
-		(5) Bubble sort\n
-		(6) Ripple sort\n
-		(7) Shaker sort\n");
+	printf(
+		"(1) Selection sort\n"
+		"(2) Insert sort (bez zarazek)\n"
+		"(3) Insert sort (se zarazkou vlevo)\n"
+		"(4) Insert sort (se zarazkou vpravo)\n"
+		"(5) Bubble sort\n"
+		"(6) Ripple sort\n"
+		"(7) Shaker sort\n");
 	scanf("%d", &volbaRA);
 	oddelovaciCara();
 	printf("Vybrana volba:\n");
@@ -246,25 +247,32 @@ int main()
 	{
 		case 1:
 			selectionSort(pole, n);
-			vypisPole(0, pole, n);		
+			vypisPole(0, pole, n);
+		break;		
 		case 2:
 			insertSort(pole, n);
 			vypisPole(0, pole, n);
+		break;
 		case 3:
 			insertSortSeZL(pole, n + 1);
 			vypisPole(1, pole, n + 1);
+		break;
 		case 4:
 			insertSortSeZP(pole, n + 1);
 			vypisPole(1, pole, n + 1);
+		break;
 		case 5:
 			bubbleSort(pole, n);
 			vypisPole(0, pole, n);
+		break;
 		case 6:
 			rippleSort(pole, n);
 			vypisPole(0, pole, n);
+		break;
 		case 7:
 			shakerSort(pole, n);
 			vypisPole(0, pole, n);
+		break;
 	}	
 	return 0;
 }
