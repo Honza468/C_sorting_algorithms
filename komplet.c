@@ -215,9 +215,9 @@ void vypisPole(int pocatek, int pole[], int n)
 int main()
 {
 	char nazev[MAX];
-	printf("Zadejte nazev souboru, ktery chcete otevrit a vyuzit pro zpracovani dat.");
-	printf("Nazev souboru muze mit maximalne 100 znaku!");
-	printf("Soubor musite zadat i s jeho priponou!");
+	printf("Zadejte nazev souboru, ktery chcete otevrit a vyuzit pro zpracovani dat.\n");
+	printf("Nazev souboru muze mit maximalne 100 znaku!\n");
+	printf("Soubor musite zadat i s jeho priponou!\n");
 	scanf("%s", nazev);
 	FILE * f = fopen(nazev, "r");
 	if(f == NULL)
@@ -239,6 +239,7 @@ int main()
 		"(5) Bubble sort\n"
 		"(6) Ripple sort\n"
 		"(7) Shaker sort\n");
+	printf("Zadejte cislo vasi volby.\n");
 	scanf("%d", &volbaRA);
 	oddelovaciCara();
 	printf("Vybrana volba:\n");
