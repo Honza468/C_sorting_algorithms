@@ -8,11 +8,6 @@ void oddelovaciCara()
 	printf("----------------------------------------------------\n");
 }
 
-void zacatkovaHlaska()
-{
-	printf("Zacatek radiciho programu.\n");
-}
-
 void potvrzujiciHlaska()
 {
 	printf("Serazeni probehlo uspesne!\n");
@@ -23,7 +18,6 @@ void potvrzujiciHlaska()
 void selectionSort(int pole[], int n)
 {
 	printf("Selection sort algoritmus.\n");
-	zacatkovaHlaska();
 	for(int i = 0; i < n - 2; i++)
 	{
 		int minIndex = i;
@@ -46,7 +40,6 @@ void selectionSort(int pole[], int n)
 void insertSort(int pole[], int n)
 {
 	printf("Insert sort algoritmus (verze bez zarazek).\n");
-	zacatkovaHlaska();
 	int vkladany = 0;
 	int index = 0;
 	for(int i = 1; i < n - 1; i++)
@@ -69,14 +62,12 @@ void insertSortSeZL(int pole[], int n)
 {
 	//Zacatek - posun pole o jednu pozici na pravou stranu
 	printf("Insert sort se zarazkou vlevo.\n");
-	zacatkovaHlaska();
 	int vkladany = 0;
 	int index = 0;
 	for(int i = n - 1; i > 0; i--)
 	{
 		pole[i] = pole[i - 1];
 	}
-	printf("Posunuti pole probehlo uspesne!\n");
 	for(int d = 2; d < n - 1; d++)
 	{
 		vkladany = pole[d];
@@ -97,7 +88,6 @@ void insertSortSeZL(int pole[], int n)
 void insertSortSeZP(int pole[], int n)
 {
 	printf("Insert sort se zarazkou vpravo.\n");
-	zacatkovaHlaska();
 	for(int i = n - 3; i >= 0; i--)
 	{
 		pole[n - 1] = pole[i];
@@ -117,7 +107,6 @@ void insertSortSeZP(int pole[], int n)
 void bubbleSort(int pole[], int n)
 {
 	printf("Bubble sort\n");
-	zacatkovaHlaska();
 	int pomocna = 0;
 	for(int i = 0; i < n - 2; i++)
 	{
@@ -139,7 +128,6 @@ void bubbleSort(int pole[], int n)
 void rippleSort(int pole[], int n)
 {
 	printf("Ripple sort\n");
-	zacatkovaHlaska();
   int posledni_Vymena = n;
   int pomocna = 0;
   for(int d = 0; d < n - 1; d = posledni_Vymena)
@@ -164,7 +152,6 @@ void rippleSort(int pole[], int n)
 void shakerSort(int pole[], int n)
 {
 	printf("Shaker sort\n");
-	zacatkovaHlaska();
   int pocitadlo = 0;
   int posledni_VymenaP = n - 1;
   int posledni_VymenaL = 0;
@@ -227,66 +214,57 @@ void vypisPole(int pocatek, int pole[], int n)
 
 int main()
 {
-//----- Sekce testovaci poli -----
-	int testovaci1[12] = {12, 1, 3, 0, 65, 8, 7, 6, 11, 3, 2};
-	int testovaci2[12] = {12, 1, 3, 0, 65, 8, 7, 6, 11, 3, 2};
-	int testovaci3[13] = {12, 1, 3, 0, 65, 8, 7, 6, 11, 3, 2}; 
-	int testovaci4[13] = {12, 1, 3, 0, 65, 8, 7, 6, 11, 3, 2};
-	int testovaci5[12] = {12, 1, 3, 0, 65, 8, 7, 6, 11, 3, 2};
-	int testovaci6[12] = {12, 1, 3, 0, 65, 8, 7, 6, 11, 3, 2};
-	int testovaci7[12] = {12, 1, 3, 0, 65, 8, 7, 6, 11, 3, 2};
-//----- Konec sekce testovacich poli -----
+	printf("Zadejte nazev souboru, ktery chcete otevrit a vyuzit pro zpracovani dat.");
+	printf("Nazev souboru muze mit maximalne 100 znaku!");
+	printf("Soubor musite zadat i s jeho priponou!");
+	scanf("%s", nazev);
+	FILE * f = fopen(nazev, "r");
+	if(f == NULL)
+	{
+		printf("Soubor se nepodarilo otevrit!\n");
+		return EXIT_FAILURE;
+	}
+	int pole[MAX];
+	int n = prepisSouboru(f, pole);
+	int volbaRA = 0;
 
-//----- Zakomentovana sekce, bude zprovoznena v budoucnu -----
-	//char nazev[MAX];
-	//printf("V souboru, ktery chcete nacist a seradit muze byt maximalne 100 znaku!\n");
-	//printf("Zadejte nazev souboru, ktery chcete otevrit a vyuzit pro zpracovani dat.");
-	//printf("Nazev souboru muze mit maximalne 100 znaku!");
-	//printf("Soubor musite zadat i s jeho priponou!");
-	//scanf("%s", nazev);
-	//FILE * f = fopen(nazev, "r");
-	//if(f == NULL)
-	//{
-	//	printf("Soubor se nepodarilo otevrit!\n");
-	//	return EXIT_FAILURE;
-	//}
-	//int pole[MAX];
-	//int n = prepisSouboru(f, pole);
-//----- Konec zakomentovane sekce -----
-
-//----- Selection sort -----
+	printf("Nabidka radicich algoritmu (vyberte, kterym algoritmem chcete radit).\n");
+	oddelovaciCara();	
+	printf("
+		(1) Selection sort\n
+		(2) Insert sort (bez zarazek)\n
+		(3) Insert sort (se zarazkou vlevo)\n
+		(4) Insert sort (se zarazkou vpravo)\n
+		(5) Bubble sort\n
+		(6) Ripple sort\n
+		(7) Shaker sort\n");
+	scanf("%d", &volbaRA);
 	oddelovaciCara();
-	selectionSort(testovaci1, 12);
-	vypisPole(0, testovaci1, 12);
+	printf("Vybrana volba:\n");
 
-//----- Insert sort bez zarazek -----
-	oddelovaciCara();
-	insertSort(testovaci2, 12);
-	vypisPole(0, testovaci2, 12);
-
-//----- Insert sort se zarazkou vlevo -----
-	oddelovaciCara();
-	insertSortSeZL(testovaci3, 13);
-	vypisPole(1, testovaci3, 13);
-
-//----- Insert sort se zarazkou vpravo -----
-	oddelovaciCara();
-	insertSortSeZP(testovaci4, 13);
-	vypisPole(1, testovaci4, 13);
-
-//---- Bubble sort -----
-	oddelovaciCara();
-	bubbleSort(testovaci5, 11);
-	vypisPole(0, testovaci5, 12);
-
-//----- Ripple sort -----
-	oddelovaciCara();
-	rippleSort(testovaci6, 11);
-	vypisPole(0, testovaci6, 12);
-
-//----- Shaker sort -----
-	oddelovaciCara();
-	shakerSort(testovaci7, 11);
-	vypisPole(0, testovaci7, 12);
+	switch(volbaRA)
+	{
+		case 1:
+			selectionSort(pole, n);
+			vypisPole(0, pole, n);		
+		case 2:
+			insertSort(pole, n);
+			vypisPole(0, pole, n);
+		case 3:
+			insertSortSeZL(pole, n + 1);
+			vypisPole(1, pole, n + 1);
+		case 4:
+			insertSortSeZP(pole, n + 1);
+			vypisPole(1, pole, n + 1);
+		case 5:
+			bubbleSort(pole, n);
+			vypisPole(0, pole, n);
+		case 6:
+			rippleSort(pole, n);
+			vypisPole(0, pole, n);
+		case 7:
+			shakerSort(pole, n);
+			vypisPole(0, pole, n);
+	}	
 	return 0;
 }
