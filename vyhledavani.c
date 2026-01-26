@@ -1,10 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
-#include <windows.h>
+//#include <windows.h>
 #define MAX 7000
 
-int nactiDoPole(FILE *vstup, int p[])
+int nactiDoPole(FILE *vstup, int pole[])
 {
 	int i = 0;
 	int znak = 0;
@@ -16,8 +16,9 @@ int nactiDoPole(FILE *vstup, int p[])
 	return 0;
 }
 
-bool serazenoVZ(int p[], int n)
+bool serazenoVZ(int pole[], int n)
 {
+	int i = 0;
 	while(i < MAX)
 	{
 		if(pole[i] < pole[i + 1])
@@ -30,6 +31,13 @@ bool serazenoVZ(int p[], int n)
 		}
 	} 
   return true;
+}
+
+void pauza_konzole() {
+    printf("Stiskněte ENTER pro pokračování...");
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF) { }
+    getchar();
 }
 
 int sekvencniVyhledavani(int pole[], int n, int klic)
@@ -159,7 +167,7 @@ int main()
     scanf("%19s", soubor);
     FILE *f=fopen(soubor, "r");
     if (f==NULL) return -1;
-    int pole[MAX];
+    int pole[MAX];	
     int pocet = nactiDoPole(f,pole);
     printf("Pocet nactenych klicu je %d.\n", pocet);
     int volba = 1,klic;
@@ -170,20 +178,24 @@ int main()
       switch(volba)
       {
         case 1:
-					sekvencniVyhledavani()
+					sekvencniVyhledavani(pole, pocet, klic);
 				break;
         case 2:
+					sekvencniSeZarazkou(pole, pocet, klic);
 				break;
         case 3:
+					sekvencniSerazene(pole, pocet, klic);
 				break;
         case 4:
+					SekvencniSerazeneSeZarazkou(pole, pocet, klic);
 				break;
         case 5:
+					BinarniVyhledavani(pole, 0, pocet, klic);
 				break;
         case 0: printf("No konecne!");
       }
-      system("pause");
-      system("cls");
+      pauza_konzole();
+			system("clear");
     }
 
 
