@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define MAX 100
+#define MAX 10000
 
 //----- Designove funkce, slouzi pro lepsi navigaci ve vypisech -----
 void oddelovaciCara()
@@ -216,7 +216,7 @@ int main()
 {
 	char nazev[MAX];
 	printf("Zadejte nazev souboru, ktery chcete otevrit a vyuzit pro zpracovani dat.\n");
-	printf("Nazev souboru muze mit maximalne 100 znaku!\n");
+	printf("Nazev souboru muze mit maximalne 10000 znaku!\n");
 	printf("Soubor musite zadat i s jeho priponou!\n");
 	scanf("%s", nazev);
 	FILE * f = fopen(nazev, "r");
@@ -229,6 +229,7 @@ int main()
 	int n = prepisSouboru(f, pole);
 	int volbaRA = 0;
 
+	printf("Varovani!, soubor muze obsahovat pouze 10000 cisel, slov, znaku,...\n");
 	printf("Nabidka radicich algoritmu (vyberte, kterym algoritmem chcete radit).\n");
 	oddelovaciCara();	
 	printf(
