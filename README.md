@@ -32,10 +32,10 @@
 
 # How to run the project:
 ## 1. Clone the repository
-git clone git@github.com:Honza468/C_sorting_algorithms.git
+```git clone git@github.com:Honza468/C_sorting_algorithms.git```
 
 ## 2. Compile the programme
-gcc file_name.c -o file_name
+```gcc file_name.c -o file_name```
 
 ## 3. Run the programme
-./file_name
+```./file_name```
